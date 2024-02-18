@@ -3,12 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../../services/housing.service';
 import { HousingLocation } from '../../interfaces/housing-location';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-details',
   standalone: true,
   imports: [
     ReactiveFormsModule,
+    CommonModule
   ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
@@ -19,7 +21,7 @@ export class DetailsComponent implements OnInit {
   applyForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
-    email: new FormControl('')
+    email: new FormControl(''),
   });
 
   constructor(

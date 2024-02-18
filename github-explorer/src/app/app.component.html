@@ -1,0 +1,47 @@
+<main class="root-wrap">
+  <div class="title">
+    <h1>
+      Github
+      <img src="assets/users.svg" alt="users">
+      Explorer
+    </h1>
+  </div>
+
+  <div class="input-username">
+    <label for="username">Username</label>
+    <input
+      type="search"
+      id="username"
+      placeholder="Digite o username do Github"
+      [(ngModel)]="username"
+      (input)="onInputChange()"
+    >
+  </div>
+
+  <div class="is-loading" *ngIf="isLoading">
+    <img src="assets/magnifying-glass.svg" alt="magnifying glass">
+    <p>Buscando usuário...</p>
+  </div>
+
+  <div class="user-not-found" *ngIf="userNotFound">
+    <img src="assets/user-not-found.svg" alt="user not found">
+    <p>Usuário não encontrado!</p>
+  </div>
+
+  <div class="profile" *ngIf="!!user">
+    <img class="profile-avatar" [src]="user.avatar_url" [alt]="user.login">
+    <div class="profile-info">
+      <p>Nome de Usuário: {{user.login}}</p>
+      <p>Nome: {{user.name}}</p>
+      <p *ngIf="user.bio">Bio: {{user.bio}}</p>
+      <p>Repositórios Públicos: {{user.public_repos}}</p>
+      <p>Gists Públicos: {{user.public_gists}}</p>
+      <p>Seguidores: {{user.followers}} | Seguindo: {{user.following}}</p>
+      <p>Criado em: {{user.created_at | date: 'dd/MM/yyyy' }}</p>
+    </div>
+    <a [href]="user.html_url" target="_blank" class="profile-url">
+      Acessar perfil
+      <img src="assets/external-link.svg" alt="external link">
+    </a>
+  </div>
+</main>
